@@ -14,3 +14,17 @@ Colours:
 body{
     background-color: blue;
 }
+html,body{
+	margin: 0;
+}
+#frame{
+	height: 768px;
+	width: 1366px;
+	background-color: gray;
+}
+.frameInner{
+	background-color: white;
+}
+.marginAuto{
+	margin: auto;
+}
