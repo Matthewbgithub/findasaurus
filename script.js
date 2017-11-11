@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var x;
 	var y;
 	var loops = 500;
-	var maxDinos = 6;
+	var maxDinos = 20;
 	//decides the random dino to search for
 	var dinoToChoose = Math.round(Math.random()*maxDinos);
 	var no = 0;
@@ -46,6 +46,9 @@ $(document).ready(function(){
 		generateDinosaur(x,y,no);
 	}
 	function generateDinosaur(x,y,d){
-		$('.frameInner').append('<img style="left: calc( '+x+'% - '+($('.dinoInFrame').width())/2+'px );top: calc( '+y+'% - '+($('.dinoInFrame').height())/2+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">');
+		$('.frameInner').append('<img dino="'+d+'" style="left: calc( '+x+'% - '+($('.dinoInFrame').width())/2+'px );top: calc( '+y+'% - '+($('.dinoInFrame').height())/2+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">');
 	}
+	$('[dino="'+dinoToChoose+'"]').on('click',function(){
+		$(this).addClass('winner');
+	})
 });
