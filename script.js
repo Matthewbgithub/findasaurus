@@ -1,6 +1,4 @@
 $(document).ready(function(){
- 	var x = 50;
-	var y = 50;
 	var loops = 500;
 	var maxDinos = 2;
 	var no = 0;
@@ -11,6 +9,10 @@ $(document).ready(function(){
 		for(var i = 0; i < loops; i++){
 			x = Math.random()*100;
 			y = Math.random()*100;
+			while(x>0&&x<41&&y>0&&y<50){
+				x = Math.random()*100;
+				y = Math.random()*100;
+			}
 			generateDinosaur(x,y,i);
 		}
 	}
