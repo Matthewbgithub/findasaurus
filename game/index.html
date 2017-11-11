@@ -4,11 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,700" rel="stylesheet">
-        <link rel="stylesheet" href="/game/style.css">
+        <link rel="stylesheet" href="style.css">
 		
     </head>
-    <body>
-		<a href="game/index.html">enter game</a>
+    <body onload="show();">
+		<div class="frameOuter">
+			<div  class="frame marginAuto">
+				<div class="frameInner marginAuto">
+				</div>
+			</div>
+			<div class="sideUi marginAuto">
+				You are looking for:
+				<div class="lookingDinosaur">
+					<img id="findMe" src="DinoPics/dino0.png">
+				</div>
+				<div>Time: <span id="time"></span></div></div>
+		</div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="timer.js"></script>
 		<script src="script.js"></script>
