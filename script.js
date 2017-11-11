@@ -1,54 +1,87 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	var x;
 	var y;
 	var loops = 500;
 	var maxDinos = 20;
+	var drawnItems = [];
+	var b = 5;
 	//decides the random dino to search for
-	var dinoToChoose = Math.round(Math.random()*maxDinos);
+	var dinoToChoose = Math.round(Math.random() * maxDinos);
 	var no = 0;
+
+	var leftBuffer;
+	var topBuffer;
 	start();
-	
-	function start(){
+
+	function start() {
 		//adds an initial dino that is invisible
 		$('.frameInner').append('<img class="dinoInFrame" style="display:none;" src="./DinoPics/dino0.png">');
+		leftBuffer = ($('.dinoInFrame').width() / 2);
+		topBuffer = ($('.dinoInFrame').height() / 2);
 		//adds the dino to the one in the search for box
-		$('#findMe').attr('src','./DinoPics/dino'+dinoToChoose+'.png');
-		for(var i = 0; i < loops; i++){
-			x = Math.random()*100;
-			y = Math.random()*100;
-			generatePos();
-			decideDinosaur(x,y,i);
+		$('#findMe').attr('src', './DinoPics/dino' + dinoToChoose + '.png');
+		for (var i = 0; i < loops; i++) {
+			var generated = false;
+			var c = 0;
+			while(!generated && c < 10) {
+				x = Math.round(Math.random() * 100);
+				y = Math.round(Math.random() * 100);
+				//console.log("x: " + x + ", y: " + y);
+				generated = decideDinosaur(x, y, i);
+				//console.log("Dinasour was generated: " + generated);
+				c++;
+			}
 		}
-		generatePos();
-		generateDinosaur(x,y,dinoToChoose);
+		x = Math.round(Math.random() * 100);
+		y = Math.round(Math.random() * 100);
+		generateDinosaur(x, y, dinoToChoose);
 	}
 	//Randomly generate coordinates
-	function generatePos(){
-		while(x>0&&x<41&&y>0&&y<50){
-			x = Math.random()*100;
-			y = Math.random()*100;
-		}
-	}
-	function decideDinosaur(x,y,i){
-		function checkNoTooLarge(){	
-			if(no > maxDinos){
+
+	function decideDinosaur(x, y, i) {
+		function checkNoTooLarge() {
+			if (no > maxDinos) {
 				no = 0;
 			}
 		}
-		if(i>no){
+		if (i > no) {
 			no++;
 			checkNoTooLarge();
-			if(no == dinoToChoose){
+			if (no == dinoToChoose) {
 				no++;
 			}
 			checkNoTooLarge();
 		}
-		generateDinosaur(x,y,no);
+
+		var tooClose = false;
+		//console.log("Current drawnItems: " + drawnItems);
+		for(var j = 0; j < drawnItems.length; j++) {
+			coord = [drawnItems[j][0], drawnItems[j][1]];
+			//console.log("Current coord: " + coord);
+			if(x < coord[0] + b && x > coord[0] - b && y < coord[1] + b && y > coord[1] -  b) {
+				tooClose = true;
+			}
+		}
+		
+		if(tooClose) {
+			return false;
+		} else {
+			generateDinosaur(x, y, no);
+			return true;
+		}
 	}
-	function generateDinosaur(x,y,d){
-		$('.frameInner').append('<img dino="'+d+'" style="left: calc( '+x+'% - '+($('.dinoInFrame').width())/2+'px );top: calc( '+y+'% - '+($('.dinoInFrame').height())/2+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">');
+
+	function generateDinosaur(x, y, d) {
+		var string = '<img dino="'+d+'"style="left: calc( ' + Math.round(x) + '% - '+leftBuffer+'px ); top: calc( ' + Math.round(y) + '% - '+topBuffer+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">';
+		//console.log("tag: " + string);
+		$('.frameInner').append(string);
+		var coord = [];	
+		coord.push(x); coord.push(y);
+		//console.log("New coord: " + coord);
+		drawnItems.push(coord);
+		//console.log("Updated drawnItems: " + drawnItems);
 	}
-	$('[dino="'+dinoToChoose+'"]').on('click',function(){
+	$('[dino="' + dinoToChoose + '"]').on('click', function() {
 		$(this).addClass('winner');
 	})
 });
