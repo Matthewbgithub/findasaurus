@@ -12,18 +12,28 @@ Colours:
 */
 
 body{
-    background-color: blue;
+    background-color: black;
 }
 html,body{
 	margin: 0;
 }
-#frame{
-	height: 768px;
-	width: 1366px;
+.frameOuter{
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+}
+.frame{
+	max-height: 97vh;
+	max-width: 130vh;
+	height: 67.5vw;
+	width: 90vw;
 	background-color: gray;
 }
 .frameInner{
-	background-color: white;
+	background-image: url(assets/bg.png);
+	background-size: cover;
+	height: 100%;
 }
 .marginAuto{
 	margin: auto;
