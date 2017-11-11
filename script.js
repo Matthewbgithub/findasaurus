@@ -1,11 +1,18 @@
 $(document).ready(function(){
+	var x;
+	var y;
 	var loops = 500;
-	var maxDinos = 2;
+	var maxDinos = 6;
+	//decides the random dino to search for
+	var dinoToChoose = Math.round(Math.random()*maxDinos);
 	var no = 0;
 	start();
 	
 	function start(){
+		//adds an initial dino that is invisible
 		$('.frameInner').append('<img class="dinoInFrame" style="display:none;" src="./DinoPics/dino0.png">');
+		//adds the dino to the one in the search for box
+		$('#findMe').attr('src','./DinoPics/dino'+dinoToChoose+'.png');
 		for(var i = 0; i < loops; i++){
 			x = Math.random()*100;
 			y = Math.random()*100;
@@ -13,16 +20,30 @@ $(document).ready(function(){
 				x = Math.random()*100;
 				y = Math.random()*100;
 			}
-			generateDinosaur(x,y,i);
+			decideDinosaur(x,y,i);
 		}
+		//generates the dinosaur to find
+		x = Math.random()*100;
+		y = Math.random()*100;
+		generateDinosaur(x,y,dinoToChoose);
 	}
-	function generateDinosaur(x,y,i){
+	function decideDinosaur(x,y,i){
+		function checkNoTooLarge(){	
+			if(no > maxDinos){
+				no = 0;
+			}
+		}
 		if(i>no){
 			no++;
+			checkNoTooLarge();
+			if(no == dinoToChoose){
+				no++;
+			}
+			checkNoTooLarge();
 		}
-		if(no > maxDinos){
-			no = 0;
-		}
-		$('.frameInner').append('<img style="left: calc( '+x+'% - '+($('.dinoInFrame').width())/2+'px );top: calc( '+y+'% - '+($('.dinoInFrame').height())/2+'px );" class="dinoInFrame" src="./DinoPics/dino'+no+'.png">');
+		generateDinosaur(x,y,no);
+	}
+	function generateDinosaur(x,y,d){
+		$('.frameInner').append('<img style="left: calc( '+x+'% - '+($('.dinoInFrame').width())/2+'px );top: calc( '+y+'% - '+($('.dinoInFrame').height())/2+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">');
 	}
 });
