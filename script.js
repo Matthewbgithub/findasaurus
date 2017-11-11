@@ -86,6 +86,6 @@ $(document).ready(function() {
 		win();
 	})
 	function win(){
-		
+		stop();
 	}
 });
