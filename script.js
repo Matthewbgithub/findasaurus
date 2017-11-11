@@ -16,16 +16,18 @@ $(document).ready(function(){
 		for(var i = 0; i < loops; i++){
 			x = Math.random()*100;
 			y = Math.random()*100;
-			while(x>0&&x<41&&y>0&&y<50){
-				x = Math.random()*100;
-				y = Math.random()*100;
-			}
+			generatePos();
 			decideDinosaur(x,y,i);
 		}
-		//generates the dinosaur to find
-		x = Math.random()*100;
-		y = Math.random()*100;
+		generatePos();
 		generateDinosaur(x,y,dinoToChoose);
+	}
+	//Randomly generate coordinates
+	function generatePos(){
+		while(x>0&&x<41&&y>0&&y<50){
+			x = Math.random()*100;
+			y = Math.random()*100;
+		}
 	}
 	function decideDinosaur(x,y,i){
 		function checkNoTooLarge(){	
