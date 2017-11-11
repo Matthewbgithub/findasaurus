@@ -42,6 +42,7 @@ html,body{
 	position: absolute;
 	width: 10vh;
 	height: auto;
+	transition: 0.5s;
 }
 .sideUi{
 	margin: 10px;
@@ -53,7 +54,9 @@ html,body{
 	font-weight: 800;
 }
 .winner{
-	width: 500px;
+	left: calc( 50% - 350px ) !important;
+	top: calc( 50% - 230px ) !important;
+	width: 700px;
 }
 #findMe{
 	padding: 5%;
