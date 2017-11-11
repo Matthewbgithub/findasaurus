@@ -83,5 +83,9 @@ $(document).ready(function() {
 	}
 	$('[dino="' + dinoToChoose + '"]').on('click', function() {
 		$(this).addClass('winner');
+		win();
 	})
+	function win(){
+		
+	}
 });
