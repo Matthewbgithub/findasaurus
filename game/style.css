@@ -10,7 +10,7 @@ Colours:
 */
 
 body{
-    background-color: black;
+    background-image:url(assets/tile.png);
 }
 html,body{
 	margin: 0;
@@ -52,6 +52,9 @@ html,body{
 	padding: 10px;
 	font-size: 1.5rem;
 	font-weight: 800;
+	max-width: 500px;
+	border-radius: 30px;
+	border: 10px solid white;
 }
 .winner{
 	left: calc( 50% - 350px ) !important;
@@ -59,8 +62,43 @@ html,body{
 	width: 700px;
 }
 #findMe{
-	padding: 5%;
-	height: 30vh;
+	margin: 30px 0px;
+	width: 100%;
+}
+.restartBTN{
+	margin: 30px 0px 10px;
+	width: 100%;
+	height: 80px;
+	font-size: 2rem;
+	font-weight: 800;
+	background-color: #cccdc8;
+	border-radius: 5px;
+	border: 5px solid #cccdc8;
+	cursor: pointer;
+}
+.restartBTN:hover{
+	background-color: #b5b5b5;
+	border-color: #b5b5b5;
+}
+.titleButton{
+	height: 50vh;
+	width: 100vw;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(assets/title1.png);
+	cursor: pointer;
+}
+.titleButton:hover{
+	background-image: url(assets/title2.png);
+}
+.waldinosaur{
+	margin-left: 50vw;
+	height: 50vh;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: contain;
+	background-image: url(assets/waldinosaur.png);
 }
 .marginAuto{
 	margin: auto;
