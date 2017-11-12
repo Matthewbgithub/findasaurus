@@ -25,7 +25,7 @@ $(document).ready(function() {
 			$('.frameInner').removeClass(element);
 		});
 		$('.frameInner').addClass(currentScene);
-		console.log(currentScene);
+		$('.timer').removeClass('red');
 		//adds an initial dino that is invisible
 		$('.frameInner').append('<img class="dinoInFrame" style="display:none;" src="./DinoPics/dino0.png">');
 		leftBuffer = ($('.dinoInFrame').width() / 2);
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			var c = 0;
 			while(!generated && c < 10) {
 				x = Math.round(Math.random() * 94) + 3;
-				y = Math.round(Math.random() * 94) + 3;
+				y = Math.round(Math.random() * 94);
 				//console.log("x: " + x + ", y: " + y);
 				generated = decideDinosaur(x, y, i);
 				//console.log("Dinasour was generated: " + generated);
@@ -98,13 +98,13 @@ $(document).ready(function() {
 
 	function findIfOutOfBounds(x, y) {
 		if(currentScene=='beach'){
-			if(y<40){
+			if(y<35){
 				return true;
 			}else{
 				return false;
 			}
 		}else if(currentScene=='river'){
-			if (y < x + 25 && y > x - 28) {
+			if (y < x + 20 && y > x - 28) {
 			if(y < 110 - x && y > 90 - x) {
 				return false;
 			} else {
@@ -141,6 +141,7 @@ $(document).ready(function() {
 	})
 	function win(){
 		stop();
+		$('.timer').addClass('red');
 		$('.frameInner').append('<div class="firework"></div>');
 	}
 	

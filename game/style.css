@@ -32,6 +32,7 @@ html,body{
 	background-color: gray;
 }
 .frameInner{
+	background-image: url(assets/loading.png);
 	background-size: cover;
 	height: 100%;
 	overflow:hidden; 
@@ -122,6 +123,12 @@ html,body{
         transform: scaleX(-1);
         filter: FlipH;
         -ms-filter: "FlipH";
+}
+.red{
+	color: red;
+}
+p{
+	margin-bottom: 0rem;
 }
 .marginAuto{
 	margin: auto;
