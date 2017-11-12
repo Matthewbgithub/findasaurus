@@ -52,6 +52,9 @@ html,body{
 	padding: 10px;
 	font-size: 1.5rem;
 	font-weight: 800;
+	max-width: 500px;
+	border-radius: 30px;
+	border: 10px solid white;
 }
 .winner{
 	left: calc( 50% - 350px ) !important;
@@ -59,8 +62,23 @@ html,body{
 	width: 700px;
 }
 #findMe{
-	padding: 5%;
-	height: 30vh;
+	margin: 30px 0px;
+	width: 100%;
+}
+.restartBTN{
+	margin: 30px 0px 10px;
+	width: 100%;
+	height: 80px;
+	font-size: 2rem;
+	font-weight: 800;
+	background-color: #cccdc8;
+	border-radius: 5px;
+	border: 5px solid #cccdc8;
+	cursor: pointer;
+}
+.restartBTN:hover{
+	background-color: #b5b5b5;
+	border-color: #b5b5b5;
 }
 .titleButton{
 	height: 50vh;
