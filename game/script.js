@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var drawnItems = [];
 	var b = 6;
 	//decides the random dino to search for
-	var dinoToChoose = 'omega-black-jeans';
+	var dinoToChoose = 'alpha-yellow-dapper';
 	var no = 0;
 	var scene = ['river','beach'];
 	var currentScene;
