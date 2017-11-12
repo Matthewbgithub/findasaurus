@@ -81,11 +81,11 @@ $(document).ready(function() {
 	}
 
 	function findIfOutOfBounds(x, y) {
-		if (y < x + 40 && y > x - 20) {
-			if(y < x + 100 && y > 100 - x + 10) {
-				return true;
-			} else {
+		if (y < x + 38 && y > x - 38) {
+			if(y < 110 - x && y > 90 - x) {
 				return false;
+			} else {
+				return true;
 			}
 		} else {
 			return false;
