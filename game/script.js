@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var x;
 	var y;
-	var loops = 500;
+	var loops = 1024;
 	var maxDinos = 20;
 	var drawnItems = [];
 	var b = 5;
@@ -32,9 +32,15 @@ $(document).ready(function() {
 				c++;
 			}
 		}
-		x = Math.round(Math.random() * 100);
-		y = Math.round(Math.random() * 100);
-		generateDinosaur(x, y, dinoToChoose);
+		var outOfBounds = true;
+		while(outOfBounds) {
+			x = Math.round(Math.random() * 100);
+			y = Math.round(Math.random() * 100);
+			outOfBounds = findIfOutOfBounds(x, y);
+			if(!outOfBounds) {
+				generateDinosaur(x, y, dinoToChoose);
+			}
+		}
 	}
 	//Randomly generate coordinates
 
@@ -53,6 +59,9 @@ $(document).ready(function() {
 			checkNoTooLarge();
 		}
 
+		var outOfBounds = findIfOutOfBounds(x, y);
+
+
 		var tooClose = false;
 		//console.log("Current drawnItems: " + drawnItems);
 		for(var j = 0; j < drawnItems.length; j++) {
@@ -63,11 +72,23 @@ $(document).ready(function() {
 			}
 		}
 		
-		if(tooClose) {
+		if(tooClose || outOfBounds) {
 			return false;
 		} else {
 			generateDinosaur(x, y, no);
 			return true;
+		}
+	}
+
+	function findIfOutOfBounds(x, y) {
+		if (y < x + 40 && y > x - 20) {
+			if(y < x + 100 && y > 100 - x + 10) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
 	}
 
