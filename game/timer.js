@@ -69,7 +69,7 @@ function formatTime(time) {
 	s = Math.floor( time / 1000 );
 	ms = time % 1000;
 
-	newTime = pad(h, 2) + ':' + pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 2);
+	newTime =  pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 2);
 	return newTime;
 }
 
