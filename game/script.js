@@ -4,16 +4,24 @@ $(document).ready(function() {
 	var loops = 1024;
 	var maxDinos = 20;
 	var drawnItems = [];
-	var b = 5;
+	var b = 6;
 	//decides the random dino to search for
 	var dinoToChoose = Math.round(Math.random() * maxDinos);
 	var no = 0;
+	var scene = ['river','beach'];
+	var currentScene;
 
 	var leftBuffer;
 	var topBuffer;
 	start();
 
 	function start() {
+		currentScene = scene[Math.round(Math.random()*(scene.length-1))];
+		scene.forEach(function(element) {
+			$('.frameInner').removeClass(element);
+		});
+		$('.frameInner').addClass(currentScene);
+		console.log(currentScene);
 		//adds an initial dino that is invisible
 		$('.frameInner').append('<img class="dinoInFrame" style="display:none;" src="./DinoPics/dino0.png">');
 		leftBuffer = ($('.dinoInFrame').width() / 2);
@@ -81,14 +89,22 @@ $(document).ready(function() {
 	}
 
 	function findIfOutOfBounds(x, y) {
-		if (y < x + 25 && y > x - 28) {
+		if(currentScene=='beach'){
+			if(y<40){
+				return true;
+			}else{
+				return false;
+			}
+		}else if(currentScene=='river'){
+			if (y < x + 25 && y > x - 28) {
 			if(y < 110 - x && y > 90 - x) {
 				return false;
 			} else {
 				return true;
 			}
-		} else {
-			return false;
+			} else {
+				return false;
+			}
 		}
 	}
 
@@ -108,10 +124,9 @@ $(document).ready(function() {
 	})
 	function win(){
 		stop();
-		$('.frameInner').append('<div class="firework"></div>');
 	}
 	
 	$('.titleButton').on('click',function(){
-		window.location.href = '/game/index.html';
+		window.location.href = './game/index.html';
 	})
 });
