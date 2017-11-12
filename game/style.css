@@ -32,11 +32,16 @@ html,body{
 	background-color: gray;
 }
 .frameInner{
-	background-image: url(assets/bg.png);
 	background-size: cover;
 	height: 100%;
 	overflow:hidden; 
 	position: relative;
+}
+.river{
+	background-image: url(assets/river.png);
+}
+.beach{
+	background-image: url(assets/beach.png);
 }
 .dinoInFrame{
 	position: absolute;
@@ -60,16 +65,6 @@ html,body{
 	left: calc( 50% - 350px ) !important;
 	top: calc( 50% - 230px ) !important;
 	width: 700px;
-	z-index: 45;
-}
-.firework{
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	background-image: url(assets/fireworrk.gif);
-	height: 100%;
-	position: relative;
-	z-index: 44;
 }
 #findMe{
 	margin: 30px 0px;
