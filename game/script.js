@@ -81,7 +81,7 @@ $(document).ready(function() {
 	}
 
 	function findIfOutOfBounds(x, y) {
-		if (y < x + 38 && y > x - 38) {
+		if (y < x + 25 && y > x - 28) {
 			if(y < 110 - x && y > 90 - x) {
 				return false;
 			} else {
