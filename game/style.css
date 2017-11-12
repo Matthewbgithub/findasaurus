@@ -10,7 +10,7 @@ Colours:
 */
 
 body{
-    background-color: black;
+    background-image:url(assets/tile.png);
 }
 html,body{
 	margin: 0;
@@ -61,6 +61,26 @@ html,body{
 #findMe{
 	padding: 5%;
 	height: 30vh;
+}
+.titleButton{
+	height: 50vh;
+	width: 100vw;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(assets/title1.png);
+	cursor: pointer;
+}
+.titleButton:hover{
+	background-image: url(assets/title2.png);
+}
+.waldinosaur{
+	margin-left: 50vw;
+	height: 50vh;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-size: contain;
+	background-image: url(assets/waldinosaur.png);
 }
 .marginAuto{
 	margin: auto;

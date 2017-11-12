@@ -109,4 +109,8 @@ $(document).ready(function() {
 	function win(){
 		stop();
 	}
+	
+	$('.titleButton').on('click',function(){
+		window.location.href = '/game/index.html';
+	})
 });
