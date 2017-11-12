@@ -6,11 +6,15 @@ $(document).ready(function() {
 	var drawnItems = [];
 	var b = 6;
 	//decides the random dino to search for
-	var dinoToChoose = Math.round(Math.random() * maxDinos);
+	var dinoToChoose = 'omega-black-jeans';
 	var no = 0;
 	var scene = ['river','beach'];
 	var currentScene;
-
+	var spriteDir = '/DinoPics/';
+	var spriteBases = ['alpha', 'omega'];
+	var spriteColours = ['red', 'blue', 'yellow', 'brown', 'green', 'pink', 'purple'];
+	var spriteMods = ['nude', 'jeans'];
+	var spriteVariants = ['0'];
 	var leftBuffer;
 	var topBuffer;
 	start();
@@ -83,7 +87,7 @@ $(document).ready(function() {
 		if(tooClose || outOfBounds) {
 			return false;
 		} else {
-			generateDinosaur(x, y, no);
+			generateDinosaur(x, y, generateSprite());
 			return true;
 		}
 	}
@@ -108,9 +112,15 @@ $(document).ready(function() {
 		}
 	}
 
+	function generateSprite() {
+		var filename = spriteBases[Math.round(Math.random() * (spriteBases.length - 1))] + '-' + spriteColours[Math.round(Math.random() * (spriteColours.length - 1))] + '-' + spriteMods[Math.round(Math.random() * (spriteMods.length - 1))];
+		console.log(filename);
+		return filename;
+	}
+
 	function generateDinosaur(x, y, d) {
-		var string = '<img dino="'+d+'"style="left: calc( ' + Math.round(x) + '% - '+leftBuffer+'px ); top: calc( ' + Math.round(y) + '% - '+topBuffer+'px );" class="dinoInFrame" src="./DinoPics/dino'+d+'.png">';
-		//console.log("tag: " + string);
+		var string = '<img dino="'+d+'" style="left: calc( ' + Math.round(x) + '% - '+leftBuffer+'px ); top: calc( ' + Math.round(y) + '% - '+topBuffer+'px );" class="dinoInFrame" src=".' + spriteDir+ d + '.png">';
+		console.log("tag: " + string);
 		$('.frameInner').append(string);
 		var coord = [];	
 		coord.push(x); coord.push(y);
@@ -124,6 +134,7 @@ $(document).ready(function() {
 	})
 	function win(){
 		stop();
+		$('.frameInner').append('<div class="firework"></div>');
 	}
 	
 	$('.titleButton').on('click',function(){
