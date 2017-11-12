@@ -124,6 +124,7 @@ $(document).ready(function() {
 	})
 	function win(){
 		stop();
+		$('.frameInner').append('<div class="firework"></div>');
 	}
 	
 	$('.titleButton').on('click',function(){
