@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var loops = 4096;
 	var maxDinos = 20;
 	var drawnItems = [];
-	var b = 4;
+	var b = 40;
 	//decides the random dino to search for
 	
 	var no = 0;

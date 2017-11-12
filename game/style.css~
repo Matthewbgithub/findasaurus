@@ -45,7 +45,7 @@ html,body{
 }
 .dinoInFrame{
 	position: absolute;
-	width: 8vh;
+	width: 5vh;
 	height: auto;
 	transition: 0.5s;
 }
