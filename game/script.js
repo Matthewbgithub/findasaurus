@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var x;
 	var y;
-	var loops = 1024;
+	var loops = 2048;
 	var maxDinos = 20;
 	var drawnItems = [];
 	var b = 6;
@@ -31,7 +31,7 @@ $(document).ready(function() {
 		leftBuffer = ($('.dinoInFrame').width() / 2);
 		topBuffer = ($('.dinoInFrame').height() / 2);
 		//adds the dino to the one in the search for box
-		$('#findMe').attr('src', './DinoPics/dino' + dinoToChoose + '.png');
+		$('#findMe').attr('src', './DinoPics/' + dinoToChoose + '.png');
 		for (var i = 0; i < loops; i++) {
 			var generated = false;
 			var c = 0;
@@ -119,7 +119,11 @@ $(document).ready(function() {
 	}
 
 	function generateDinosaur(x, y, d) {
-		var string = '<img dino="'+d+'" style="left: calc( ' + Math.round(x) + '% - '+leftBuffer+'px ); top: calc( ' + Math.round(y) + '% - '+topBuffer+'px );" class="dinoInFrame" src=".' + spriteDir+ d + '.png">';
+		var flip = "";		
+		if(x % 2 == 0) {
+			flip = "flip";
+		}
+		var string = '<img dino="'+d+'" style="left: calc( ' + Math.round(x) + '% - '+leftBuffer+'px ); top: calc( ' + Math.round(y) + '% - '+topBuffer+'px );" class="dinoInFrame '+flip+'" src=".' + spriteDir+ d + '.png">';
 		console.log("tag: " + string);
 		$('.frameInner').append(string);
 		var coord = [];	
